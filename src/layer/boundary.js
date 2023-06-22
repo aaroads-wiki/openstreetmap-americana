@@ -124,14 +124,6 @@ export const state = {
         [7, `hsl(${Color.hueBorder}, 2%, 48%)`],
       ],
     },
-    "line-dasharray": {
-      stops: [
-        [3, [4, 4, 4, 4, 12, 4]],
-        [6, [3.5, 3, 3.5, 3, 20, 3]],
-        [8, [2.5, 2.5, 2.5, 2.5, 20, 2.5]],
-        [10, [2, 2.5, 2, 2.5, 12, 2.5]],
-      ],
-    },
     "line-width": {
       stops: [
         [3, 0.5],
@@ -222,9 +214,6 @@ export const country = {
         [4, 1.5],
         [10, 2.25],
       ],
-    },
-    "line-dasharray": {
-      stops: [[3, [10, 1, 3, 1]]],
     },
     "line-blur": 0,
   },

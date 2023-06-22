@@ -1,23 +1,23 @@
-export const backgroundFill = `hsl(30, 44%, 96%)`;
-export const backgroundFillTranslucent = `hsla(30, 44%, 96%, 0.8)`;
+export const backgroundFill = `hsl(60, 39%, 95%)`;
+export const backgroundFillTranslucent = `hsla(60, 39%, 95%, 0.8)`;
 
-export const waterFill = "hsl(211, 50%, 85%)";
-export const waterFillTranslucent = "hsla(211, 50%, 85%, 0.5)";
-export const waterIntermittentFill = "hsla(211, 60%, 85%, 0.3)";
-export const waterIntermittentOutline = "hsl(211, 100%, 30%)";
-export const waterLine = "hsl(211, 42%, 70%)";
-export const waterLineBold = "hsl(211, 42%, 50%)";
-export const waterLabel = "hsl(211, 43%, 28%)";
+export const waterFill = "hsl(201, 100%, 87%)";
+export const waterFillTranslucent = "hsla(201, 100%, 87%, 0.5)";
+export const waterIntermittentFill = "hsla(201, 60%, 87%, 0.3)";
+export const waterIntermittentOutline = "hsl(201, 100%, 30%)";
+export const waterLine = "hsl(201, 42%, 70%)";
+export const waterLineBold = "hsl(201, 42%, 50%)";
+export const waterLabel = "hsl(201, 43%, 28%)";
 
 export const hueBorder = 0;
 export const hueBorderCasing = 281;
 
-export const border = "hsl(0, 2%, 47%)";
+export const border = "hsl(0, 0%, 61%)";
 export const borderCasing = `hsl(${hueBorderCasing}, 35%, 86%)`;
 
-export const parkFill = "hsl(136, 41%, 89%)";
-export const parkOutline = "hsla(136, 41%, 70%, 50%)";
-export const parkLabel = "hsl(136, 71%, 29%)";
+export const parkFill = "hsl(110, 41%, 75%)";
+export const parkOutline = "hsla(110, 41%, 70%, 50%)";
+export const parkLabel = "hsl(110, 71%, 29%)";
 export const parkLabelHalo = "hsl(90, 27%, 94%)";
 
 export const aerialwayLine = "hsl(310, 41%, 59%)";

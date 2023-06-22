@@ -1,7 +1,5 @@
 "use strict";
 
-import * as Color from "../constants/color.js";
-
 export const urbanizedArea = {
   id: "urbanized-area",
   type: "fill",
@@ -9,19 +7,7 @@ export const urbanizedArea = {
   maxzoom: 6,
   filter: ["==", ["get", "class"], "residential"],
   paint: {
-    "fill-color": [
-      "interpolate-lab",
-      ["linear"],
-      ["zoom"],
-      4,
-      "hsl(41, 90%, 85%)",
-      5,
-      "hsl(41, 90%, 80%)",
-      5.5,
-      "hsl(41, 90%, 80%)",
-      6,
-      Color.backgroundFill,
-    ],
+    "fill-color": "hsl(60, 100%, 91%)",
   },
   source: "openmaptiles",
   "source-layer": "landuse",

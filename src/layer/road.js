@@ -18,7 +18,9 @@ const minZoomSmallService = 15;
 const roadExp = 1.2;
 
 const roadHue = 0;
-const tollRoadHue = 48;
+const motorwayHue = 218;
+const trunkHue = 40;
+const tollRoadHue = 100;
 const buswayHue = 322;
 
 //Tunnel casing dash pattern
@@ -239,7 +241,7 @@ const roadCasingColorTunnel = [
   "tunnel",
   [
     ...classSelector,
-    ["motorway", "trunk"],
+    "motorway",
     [
       ...tollSelector,
       [
@@ -247,7 +249,7 @@ const roadCasingColorTunnel = [
         `hsl(${tollRoadHue}, 41%, 85%)`,
         `hsl(${tollRoadHue}, 41%, 80%)`,
       ],
-      `hsl(${roadHue}, 41%, 80%)`,
+      `hsl(${motorwayHue}, 41%, 80%)`,
     ],
     ["primary", "secondary", "tertiary", "busway", "bus_guideway"],
     "hsl(0, 0%, 80%)",
@@ -256,12 +258,13 @@ const roadCasingColorTunnel = [
 ];
 
 const roadCasingColorTrunkExpressway = [
-  ...classSelector,
-  "trunk",
+  "match",
+  ["get", "network"],
+  ["us-highway", "us-state"],
   [
     ...tollSelector,
     `hsl(${tollRoadHue}, 77%, 50%)`,
-    `hsl(${roadHue}, 77%, 50%)`,
+    `hsl(${trunkHue}, 77%, 50%)`,
   ],
 ];
 
@@ -289,13 +292,7 @@ const roadFillColorTunnel = [
     [
       ...tollSelector,
       `hsl(${tollRoadHue}, 71%, 90%)`,
-      `hsl(${roadHue}, 71%, 90%)`,
-    ],
-    "trunk",
-    [
-      ...tollSelector,
-      `hsl(${tollRoadHue}, 77%, 90%)`,
-      `hsl(${roadHue}, 77%, 90%)`,
+      `hsl(${motorwayHue}, 71%, 90%)`,
     ],
     ["busway", "bus_guideway"],
     `hsl(${buswayHue}, 25%, 93%)`,
@@ -310,25 +307,26 @@ const roadFillColorTunnel = [
 const highwayFillColor = [
   ...roadFillColorTunnel,
   [
-    ...classSelector,
-    "trunk",
+    "match",
+    ["get", "network"],
+    ["us-interstate", "us-highway", "us-state"],
     [
       ...expresswaySelector,
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 95%, 95%)`,
-        `hsl(${roadHue}, 95%, 95%)`,
+        `hsl(${trunkHue}, 100%, 50%)`,
       ],
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 77%, 50%)`,
-        `hsl(${roadHue}, 77%, 50%)`,
+        `hsl(${trunkHue}, 100%, 50%)`,
       ],
     ],
     [
       ...tollSelector,
       `hsl(${tollRoadHue}, 100%, 75%)`,
-      `hsl(${roadHue}, 100%, 100%)`,
+      `hsl(${trunkHue}, 100%, 100%)`,
     ],
   ],
 ];
@@ -339,19 +337,23 @@ const roadSurfaceColor = [
   [
     ...tollSelector,
     `hsl(${tollRoadHue}, 50%, 70%)`,
-    `hsl(${roadHue}, 50%, 70%)`,
-  ],
-  "trunk",
-  [
-    ...tollSelector,
-    `hsl(${tollRoadHue}, 95%, 80%)`,
-    `hsl(${roadHue}, 95%, 80%)`,
+    `hsl(${motorwayHue}, 50%, 70%)`,
   ],
   [
-    ...tollSelector,
-    `hsl(${tollRoadHue}, 100%, 40%)`,
-    `hsl(${roadHue}, 0%, 80%)`,
-  ],
+    "match",
+    ["get", "network"],
+    ["us-highway", "us-state"],
+    [
+      ...tollSelector,
+      `hsl(${tollRoadHue}, 95%, 80%)`,
+      `hsl(${trunkHue}, 95%, 80%)`,
+    ],
+    [
+      ...tollSelector,
+      `hsl(${tollRoadHue}, 100%, 40%)`,
+      `hsl(${roadHue}, 0%, 80%)`,
+    ],
+  ]
 ];
 
 function roadFillColor(hue, minZoom, transitionZoom) {
@@ -616,26 +618,26 @@ class Motorway extends Road {
       4,
       [
         ...tollSelector,
-        `hsl(${tollRoadHue}, 70%, 76%)`,
-        `hsl(${roadHue}, 70%, 76%)`,
+        `hsl(${tollRoadHue}, 70%, 73%)`,
+        `hsl(${motorwayHue}, 100%, 73%)`,
       ],
       6,
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 70%, 66%)`,
-        `hsl(${roadHue}, 70%, 66%)`,
+        `hsl(${motorwayHue}, 100%, 66%)`,
       ],
       minzoomBrunnel - 0.5,
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 70%, 60%)`,
-        `hsl(${roadHue}, 70%, 60%)`,
+        `hsl(${motorwayHue}, 100%, 60%)`,
       ],
       14,
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 71%, 45%)`,
-        `hsl(${roadHue}, 71%, 35%)`,
+        `hsl(${motorwayHue}, 100%, 35%)`,
       ],
     ];
     this.casingColor = [
@@ -646,25 +648,25 @@ class Motorway extends Road {
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 10%, 85%)`,
-        `hsl(${roadHue}, 10%, 85%)`,
+        `hsl(${motorwayHue}, 10%, 85%)`,
       ],
       6,
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 60%, 50%)`,
-        `hsl(${roadHue}, 60%, 50%)`,
+        `hsl(${motorwayHue}, 60%, 50%)`,
       ],
       minzoomBrunnel - 0.5,
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 71%, 40%)`,
-        `hsl(${roadHue}, 71%, 40%)`,
+        `hsl(${motorwayHue}, 71%, 40%)`,
       ],
       14,
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 51%, 9%)`,
-        `hsl(${roadHue}, 51%, 9%)`,
+        `hsl(${motorwayHue}, 51%, 9%)`,
       ],
     ];
   }
@@ -675,7 +677,8 @@ class Trunk extends Road {
     super();
     this.constraints = [
       "all",
-      ["==", getClass, "trunk"],
+      ["==", ["get", "network"], "us-highway"],
+      ["==", getClass, "motorway"],
       isNotLink,
       isNotExpressway,
     ];
@@ -692,19 +695,19 @@ class Trunk extends Road {
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 77%, 50%)`,
-        `hsl(${roadHue}, 77%, 50%)`,
+        `hsl(${trunkHue}, 77%, 50%)`,
       ],
       9,
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 77%, 50%)`,
-        `hsl(${roadHue}, 77%, 50%)`,
+        `hsl(${trunkHue}, 77%, 50%)`,
       ],
       15,
       [
         ...tollSelector,
         `hsl(${tollRoadHue}, 70%, 18%)`,
-        `hsl(${roadHue}, 70%, 18%)`,
+        `hsl(${trunkHue}, 70%, 18%)`,
       ],
     ];
   }
@@ -715,7 +718,8 @@ class Primary extends Road {
     super();
     this.constraints = [
       "all",
-      ["==", getClass, "primary"],
+      ["==", ["get", "network"], "us-state"],
+      ["==", getClass, "motorway"],
       isNotLink,
       isNotExpressway,
       isNotToll,
@@ -737,7 +741,8 @@ class PrimaryToll extends Primary {
     super();
     this.constraints = [
       "all",
-      ["==", getClass, "primary"],
+      ["==", ["get", "network"], "us-state"],
+      ["==", getClass, "motorway"],
       isNotLink,
       isNotExpressway,
       isToll,
@@ -756,7 +761,8 @@ class PrimaryExpressway extends Primary {
     super();
     this.constraints = [
       "all",
-      ["==", getClass, "primary"],
+      ["==", ["get", "network"], "us-state"],
+      ["==", getClass, "motorway"],
       isNotLink,
       isExpressway,
     ];
