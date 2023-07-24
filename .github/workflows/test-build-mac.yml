@@ -2,7 +2,7 @@ name: Test Build (MacOS)
 
 on:
   pull_request:
-    branches: [main]
+    branches: [aaroads]
 
 jobs:
   build:
