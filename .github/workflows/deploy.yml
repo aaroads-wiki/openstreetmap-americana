@@ -4,7 +4,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - aaroads
+      - road-rewrite-1
 permissions:
   contents: read
   pages: write

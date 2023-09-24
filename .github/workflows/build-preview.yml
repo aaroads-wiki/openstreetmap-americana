@@ -1,7 +1,7 @@
 name: Build PR Preview
 on:
   pull_request:
-    branches: [aaroads]
+    branches: [road-rewrite-1]
     types:
       - opened
       - reopened
