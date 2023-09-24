@@ -2,7 +2,7 @@ name: Lint
 
 on:
   pull_request:
-    branches: [aaroads]
+    branches: [road-rewrite-1]
 
 jobs:
   prettier:

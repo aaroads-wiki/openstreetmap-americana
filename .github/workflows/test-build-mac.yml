@@ -2,7 +2,7 @@ name: Test Build (MacOS)
 
 on:
   pull_request:
-    branches: [aaroads]
+    branches: [road-rewrite-1]
 
 jobs:
   build:
