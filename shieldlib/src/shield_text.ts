@@ -1,14 +1,49 @@
 "use strict";
 
 import * as Gfx from "./screen_gfx.js";
+import { ShieldRenderingContext } from "./shield_renderer.js";
+import {
+  BoxPadding,
+  Dimension,
+  ShieldDefinition,
+  TextLayout,
+  TextLayoutParameters,
+} from "./types.js";
 
 const VerticalAlignment = {
   Middle: "middle",
   Top: "top",
   Bottom: "bottom",
+} as const;
+
+type VerticalAlignmentType =
+  (typeof VerticalAlignment)[keyof typeof VerticalAlignment];
+
+type TextLayoutScaler = (
+  availSize: Dimension,
+  textSize: Dimension,
+  options?: TextLayoutParameters
+) => TextTransform;
+
+interface TextTransform {
+  scale: number;
+  valign: VerticalAlignmentType;
+}
+
+export interface TextPlacement {
+  xBaseline: number;
+  yBaseline: number;
+  fontPx: number;
+}
+
+let noPadding: BoxPadding = {
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
 };
 
-function ellipseScale(spaceBounds, textBounds) {
+function ellipseScale(spaceBounds: Dimension, textBounds: Dimension): number {
   //Math derived from https://mathworld.wolfram.com/Ellipse-LineIntersection.html
   var a = spaceBounds.width;
   var b = spaceBounds.height;
@@ -19,14 +54,20 @@ function ellipseScale(spaceBounds, textBounds) {
   return (a * b) / Math.sqrt(a * a * y0 * y0 + b * b * x0 * x0);
 }
 
-function ellipseTextConstraint(spaceBounds, textBounds) {
+function ellipseTextConstraint(
+  spaceBounds: Dimension,
+  textBounds: Dimension
+): TextTransform {
   return {
     scale: ellipseScale(spaceBounds, textBounds),
     valign: VerticalAlignment.Middle,
   };
 }
 
-function southHalfEllipseTextConstraint(spaceBounds, textBounds) {
+function southHalfEllipseTextConstraint(
+  spaceBounds: Dimension,
+  textBounds: Dimension
+): TextTransform {
   return {
     scale: ellipseScale(spaceBounds, {
       //Turn ellipse 90 degrees
@@ -37,7 +78,10 @@ function southHalfEllipseTextConstraint(spaceBounds, textBounds) {
   };
 }
 
-function rectTextConstraint(spaceBounds, textBounds) {
+function rectTextConstraint(
+  spaceBounds: Dimension,
+  textBounds: Dimension
+): TextTransform {
   var scaleHeight = spaceBounds.height / textBounds.height;
   var scaleWidth = spaceBounds.width / textBounds.width;
 
@@ -47,7 +91,11 @@ function rectTextConstraint(spaceBounds, textBounds) {
   };
 }
 
-function roundedRectTextConstraint(spaceBounds, textBounds, options) {
+function roundedRectTextConstraint(
+  spaceBounds: Dimension,
+  textBounds: Dimension,
+  options: TextLayoutParameters
+): TextTransform {
   //Shrink space bounds so that corners hit the arcs
   let constraintRadius = 2;
   if (options !== undefined && options.radius !== undefined) {
@@ -63,7 +111,10 @@ function roundedRectTextConstraint(spaceBounds, textBounds, options) {
   );
 }
 
-function diamondTextConstraint(spaceBounds, textBounds) {
+function diamondTextConstraint(
+  spaceBounds: Dimension,
+  textBounds: Dimension
+): TextTransform {
   let a = spaceBounds.width;
   let b = spaceBounds.height;
 
@@ -76,7 +127,10 @@ function diamondTextConstraint(spaceBounds, textBounds) {
   };
 }
 
-function triangleDownTextConstraint(spaceBounds, textBounds) {
+function triangleDownTextConstraint(
+  spaceBounds: Dimension,
+  textBounds: Dimension
+): TextTransform {
   return {
     scale: diamondTextConstraint(spaceBounds, textBounds).scale,
     valign: VerticalAlignment.Top,
@@ -95,14 +149,14 @@ function triangleDownTextConstraint(spaceBounds, textBounds) {
  * @param {*} maxFontSize - maximum font size
  * @returns JOSN object containing (X,Y) draw position and font size
  */
-function layoutShieldText(
-  r,
-  text,
-  padding,
-  bounds,
-  textLayoutDef,
-  maxFontSize
-) {
+export function layoutShieldText(
+  r: ShieldRenderingContext,
+  text: string,
+  padding: BoxPadding,
+  bounds: Dimension,
+  textLayoutDef: TextLayout,
+  maxFontSize: number = 14
+): TextPlacement {
   var padTop = r.px(padding.top) || 0;
   var padBot = r.px(padding.bottom) || 0;
   var padLeft = r.px(padding.left) || 0;
@@ -147,7 +201,7 @@ function layoutShieldText(
   metrics = ctx.measureText(text);
   textHeight = metrics.actualBoundingBoxDescent;
 
-  var yBaseline;
+  let yBaseline: number;
 
   switch (textConstraint.valign) {
     case VerticalAlignment.Top:
@@ -163,18 +217,25 @@ function layoutShieldText(
   }
 
   return {
-    xBaseline: xBaseline,
-    yBaseline: yBaseline,
+    xBaseline,
+    yBaseline,
     fontPx: fontSize,
   };
 }
 
-const defaultDefForLayout = {
+const defaultDefForLayout: ShieldDefinition = {
   padding: {
     top: 0,
     bottom: 0,
     left: 0,
     right: 0,
+  },
+  shapeBlank: {
+    drawFunc: "rect",
+    params: {
+      fillColor: "white",
+      strokeColor: "black",
+    },
   },
 };
 
@@ -188,13 +249,18 @@ const defaultDefForLayout = {
  * @param {*} bounds - size of the overall graphics area
  * @returns JOSN object containing (X,Y) draw position and font size
  */
-export function layoutShieldTextFromDef(r, text, def, bounds) {
+export function layoutShieldTextFromDef(
+  r: ShieldRenderingContext,
+  text: string,
+  def: ShieldDefinition,
+  bounds: Dimension
+): TextPlacement {
   //FIX
   if (def == null) {
     def = defaultDefForLayout;
   }
 
-  var padding = def.padding || {};
+  var padding = def.padding || noPadding;
 
   var textLayoutDef = {
     constraintFunc: "rect",
@@ -221,7 +287,12 @@ export function layoutShieldTextFromDef(r, text, def, bounds) {
  * @param {*} text - text to draw
  * @param {*} textLayout - location to draw text
  */
-export function renderShieldText(r, ctx, text, textLayout) {
+export function renderShieldText(
+  r: ShieldRenderingContext,
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  textLayout: TextPlacement
+): void {
   //Text color is set by fillStyle
   configureShieldText(r, ctx, textLayout);
 
@@ -236,11 +307,16 @@ export function renderShieldText(r, ctx, text, textLayout) {
  * @param {*} text - text to draw
  * @param {*} textLayout - location to draw text
  */
-export function drawShieldHaloText(r, ctx, text, textLayout) {
+export function drawShieldHaloText(
+  r: ShieldRenderingContext,
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  textLayout: TextPlacement
+): void {
   //Stroke color is set by strokeStyle
   configureShieldText(r, ctx, textLayout);
 
-  ctx.shadowColor = ctx.strokeStyle;
+  ctx.shadowColor = ctx.strokeStyle.toString();
   ctx.shadowBlur = 0;
   ctx.lineWidth = r.px(2);
 
@@ -249,95 +325,24 @@ export function drawShieldHaloText(r, ctx, text, textLayout) {
   ctx.shadowBlur = null;
 }
 
-function configureShieldText(r, ctx, textLayout) {
+function configureShieldText(
+  r: ShieldRenderingContext,
+  ctx: CanvasRenderingContext2D,
+  textLayout: TextPlacement
+): void {
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
   ctx.font = Gfx.shieldFont(textLayout.fontPx, r.options.shieldFont);
 }
 
-/**
- * Draw text on a modifier plate above a shield
- *
- * @param {*} r - rendering context
- * @param {*} ctx - graphics context to draw to
- * @param {*} text - text to draw
- * @param {*} bannerIndex - plate position to draw, 0=top, incrementing
- */
-export function drawBannerText(r, ctx, text, bannerIndex) {
-  drawBannerTextComponent(r, ctx, text, bannerIndex, true);
-}
-
-/**
- * Draw drop shadow for text on a modifier plate above a shield
- *
- * @param {*} r - rendering context
- * @param {*} ctx - graphics context to draw to
- * @param {*} text - text to draw
- * @param {*} bannerIndex - plate position to draw, 0=top, incrementing
- */
-export function drawBannerHaloText(r, ctx, text, bannerIndex) {
-  drawBannerTextComponent(r, ctx, text, bannerIndex, false);
-}
-
-/**
- * Banners are composed of two components: text on top, and a shadow beneath.
- *
- * @param {*} r - rendering context
- * @param {*} ctx - graphics context to draw to
- * @param {*} text - text to draw
- * @param {*} bannerIndex - plate position to draw, 0=top, incrementing
- * @param {*} textComponent - if true, draw the text.  If false, draw the halo
- */
-function drawBannerTextComponent(r, ctx, text, bannerIndex, textComponent) {
-  const bannerPadding = {
-    padding: {
-      top: r.options.bannerPadding,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
-  };
-  var textLayout = layoutShieldTextFromDef(r, text, bannerPadding, {
-    width: ctx.canvas.width,
-    height: r.px(r.options.bannerHeight - r.options.bannerPadding),
-  });
-
-  ctx.font = Gfx.shieldFont(textLayout.fontPx, r.options.shieldFont);
-  ctx.textBaseline = "top";
-  ctx.textAlign = "center";
-
-  if (textComponent) {
-    ctx.fillStyle = r.options.bannerTextColor;
-    ctx.fillText(
-      text,
-      textLayout.xBaseline,
-      textLayout.yBaseline +
-        bannerIndex * r.px(r.options.bannerHeight - r.options.bannerPadding)
-    );
-  } else {
-    ctx.strokeStyle = ctx.shadowColor = r.options.bannerTextHaloColor;
-    ctx.shadowBlur = 0;
-    ctx.lineWidth = r.px(2);
-    ctx.strokeText(
-      text,
-      textLayout.xBaseline,
-      textLayout.yBaseline +
-        bannerIndex * r.px(r.options.bannerHeight - r.options.bannerPadding)
-    );
-
-    ctx.shadowColor = null;
-    ctx.shadowBlur = null;
-  }
-}
-
-export function calculateTextWidth(r, text, fontSize) {
+export function calculateTextWidth(
+  r: ShieldRenderingContext,
+  text: string,
+  fontSize: number
+): number {
   var ctx = r.emptySprite(); //dummy canvas
   ctx.font = Gfx.shieldFont(fontSize, r.options.shieldFont);
   return Math.ceil(ctx.measureText(text).width);
-}
-
-export function drawText(name, options, ref) {
-  return drawTextFunctions[name](options, ref);
 }
 
 //Register text draw functions
@@ -349,7 +354,7 @@ const drawTextFunctions = {};
  * @param {*} name name of the function as referenced by the shield definition
  * @param {*} fxn callback to the implementing function. Takes two parameters, ref and options
  */
-function registerDrawTextFunction(name, fxn) {
+function registerDrawTextFunction(name: string, fxn: TextLayoutScaler): void {
   drawTextFunctions[name] = fxn;
 }
 

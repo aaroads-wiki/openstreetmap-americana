@@ -42,27 +42,21 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.16.1 #18.17.0 is buggy
-      - name: Save PR number
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          PR_SHA: ${{ github.sha }}
-        run: |
-          mkdir -p ./pr
-          echo $PR_NUMBER > ./pr/pr_number
-          echo $PR_SHA > ./pr/pr_sha
-          echo "Saved PR# ${{ github.event.pull_request.number }}, SHA# ${{ github.sha }} for upload"
-      - name: Save PR#
-        uses: actions/upload-artifact@v3
-        with:
-          name: pr_number
-          path: pr/
       - name: Install and Build 🔧
+        # TODO: when we move shieldlib to its own repo, move shieldlib docs CI also
         run: |
           npm ci --include=dev
           npm run build
           npm run style
           npm run shields
           cp src/configs/config.aws.js src/config.js
+          mkdir -p dist/shield-docs
+          cp -r shieldlib/docs/* dist/shield-docs
+      - name: Upload Build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: americana
+          path: dist/
       - name: Capture PR branch usage statistics
         id: pr-stats
         run: |
@@ -73,22 +67,20 @@ jobs:
       - name: Compare Stats
         id: compare-stats
         run: |
-          mkdir stats
+          mkdir -p pr
           echo '${{ env.MAIN_STATS }}'
           echo '${{ env.PR_STATS }}'
-          npm exec ts-node scripts/stats_compare '${{ env.MAIN_STATS }}' '${{ env.PR_STATS }}' > stats/stats-difference.md
-      - name: Print Stats to GitHub Checks
-        uses: LouisBrunner/checks-action@v1.6.1
-        if: always()
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Performance Metrics
-          conclusion: neutral
-          output: |
-            {"summary":"Style size changes introduced by this PR"}
-          output_text_description_file: stats/stats-difference.md
-      - name: Upload Build artifact
+          npm exec ts-node scripts/stats_compare '${{ env.MAIN_STATS }}' '${{ env.PR_STATS }}' > pr/stats-difference.md
+      - name: Save PR artifacts
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          echo $PR_NUMBER > pr/pr_number
+          echo $PR_SHA > pr/pr_sha
+          echo "Saved PR# ${{ github.event.pull_request.number }}, SHA# ${{ github.event.pull_request.head.sha }} for upload"
+      - name: Upload PR artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: americana
-          path: dist/
+          name: pr_ci_artifacts
+          path: pr/

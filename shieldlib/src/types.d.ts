@@ -3,7 +3,6 @@ export interface RouteDefinition {
   network: string;
   ref: string;
   name: string;
-  spriteID?: string;
 }
 export interface ShieldDefinition {
   spriteBlank: string[];
@@ -56,4 +55,9 @@ export interface GraphicsFactory {
    * So this function will always return 1 or 2 as appropriate based on DPR.
    */
   pixelRatio(): number;
+}
+
+export interface Dimension {
+  width: number;
+  height: number;
 }

@@ -127,8 +127,8 @@ You should create one definition entry for each network. The entry key must matc
     "drawFunc": "pentagon",
     "params": {
       "pointUp": false,
-      "offset": 5,
-      "angle": 0,
+      "yOffset": 5,
+      "sideAngle": 0,
       "fillColor": "white",
       "strokeColor": "black",
       "radius1": 2,
@@ -136,6 +136,8 @@ You should create one definition entry for each network. The entry key must matc
     }
   },
   "banners": ["ALT"],
+  "bannerTextColor": "#000",
+  "bannerTextHaloColor": "#FFF",
   "textLayout": {
     "constraintFunc": "roundedRect",
     "options": {
@@ -173,6 +175,8 @@ You should create one definition entry for each network. The entry key must matc
 
 ![Bannered routes near Downington, PA](https://wiki.openstreetmap.org/w/images/f/f8/Downington_bannered_routes_Americana.png)
 
+- **`bannerTextColor`**: specify the color of the banner text.
+- **`bannerTextHaloColor`**: specify the color of the banner knockout halo.
 - **`textLayout`**: specify how text should be inscribed within the padded bounds of the shield. The text will be drawn at the maximum size allowed by this constraint. See the [text layout functions](#text-layout-functions) section for text layout options.
 - **`colorLighten`**: specify that the shield artwork should be lightened (multiplied) by the specified color. This means that black areas will be recolor with this color and white areas will remain the same. Alpha values will remain unmodified.
 - **`colorDarken`**: specify that the shield artwork should be darkened by the specified color. This means that white areas will be recolor with this color and black areas will remain the same. Alpha values will remain unmodified.
@@ -299,9 +303,9 @@ If `shapeBlank` is specified, the shield will be drawn as a shape. This needs to
 
 The following `params` options can be specified:
 
-- `angle` - indicates angle (in degrees) at which side edges deviate from vertical. Applies to `trapezoid`, `pentagon`, `hexagonHorizontal`, `octagonVertical`.
+- `sideAngle` - indicates angle (in degrees) at which side edges deviate from vertical. Applies to `trapezoid`, `pentagon`, `hexagonHorizontal`, `octagonVertical`.
 - `fill` - specifies the internal fill color.
-- `offset` - indicates height (in pixels) at which the bottom and/or top edges deviate from horizontal. Applies to `escutcheon`, `pentagon`, `hexagonVertical`, `octagonVertical`.
+- `yOffset` - indicates height (in pixels) at which the bottom and/or top edges deviate from horizontal. Applies to `escutcheon`, `pentagon`, `hexagonVertical`, `octagonVertical`.
 - `outline` - specifies the outline color.
 - `outlineWidth` - specifies the width of the outline.
 - `pointUp` - applies to several shape types and specifies whether the pointy side is up.
@@ -313,3 +317,7 @@ The following `params` options can be specified:
 ### Custom shield graphics
 
 In addition to the stock drawing functions, a custom draw function can be specified. `paDot` and `branson` are included as examples of this, for rendering the [Allegheny County belt system](https://en.wikipedia.org/wiki/Allegheny_County_belt_system) and the Branson, Missouri colored route system. See the file `src/custom_shields.mjs` for an example of how this is done.
+
+## Documentation
+
+See [TypeDoc generated documentation](https://zelonewolf.github.io/openstreetmap-americana/shield-docs/index.html) for detailed API information.

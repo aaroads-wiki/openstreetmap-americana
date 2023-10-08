@@ -1,9 +1,15 @@
 "use strict";
 
-import * as ShieldDraw from "./shield_canvas_draw.mjs";
+import * as ShieldDraw from "./shield_canvas_draw";
+import { ShieldRenderingContext } from "./shield_renderer";
+import { ShapeBlankParams } from "./types";
 
 // Special case for Allegheny, PA Belt System
-export function paBelt(r, ctx, params) {
+export function paBelt(
+  r: ShieldRenderingContext,
+  ctx: CanvasRenderingContext2D,
+  params: ShapeBlankParams
+): number {
   ShieldDraw.roundedRectangle(r, ctx, {
     fillColor: "white",
     strokeColor: "black",
@@ -32,11 +38,15 @@ export function paBelt(r, ctx, params) {
 
   ctx.lineWidth = lineWidth;
   ctx.stroke();
-  return ctx;
+  return 20;
 }
 
 // Special case for Branson color-coded routes
-export function bransonRoute(r, ctx, params) {
+export function bransonRoute(
+  r: ShieldRenderingContext,
+  ctx: CanvasRenderingContext2D,
+  params: ShapeBlankParams
+): number {
   ShieldDraw.roundedRectangle(r, ctx, {
     fillColor: "#006747",
     strokeColor: "white",
@@ -63,7 +73,7 @@ export function bransonRoute(r, ctx, params) {
 
   ctx.lineWidth = lineWidth;
   ctx.stroke();
-  return ctx;
+  return 20;
 }
 
 export function loadCustomShields() {
