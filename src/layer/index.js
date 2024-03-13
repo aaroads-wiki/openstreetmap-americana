@@ -165,6 +165,7 @@ export function build(locales) {
     lyrPlace.village,
     lyrPlace.town,
     lyrPlace.city,
+    lyrPlace.controlcities,
     lyrPlace.countryOther,
     lyrPlace.country3,
     lyrPlace.country2,

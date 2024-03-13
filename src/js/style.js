@@ -2,6 +2,8 @@ import * as Layers from "../layer/index.js";
 
 // Generate style.json
 export function build(tileURL, spriteURL, glyphURL, locales) {
+  let today = new Date();
+  let fool = today.getMonth() === 3 && today.getDate() === 1;
   return {
     name: "Americana",
     glyphs: glyphURL,
@@ -10,6 +12,24 @@ export function build(tileURL, spriteURL, glyphURL, locales) {
       openmaptiles: {
         url: tileURL,
         type: "vector",
+      },
+      controlcities: {
+        type: "geojson",
+        data: fool ? {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "properties": {
+                "name": "Other Desert Cities"
+              }
+              "geometry": {
+                "type": "Point",
+                "coordinates": [-116.3694769,33.7667042]
+              }
+            }
+          ]
+        } : {}
       },
     },
     sprite: spriteURL,
