@@ -255,7 +255,6 @@ export const controlcities = {
   source: "controlcities",
   minzoom: 4,
   maxzoom: 12,
-  "source-layer": "place",
   metadata: {},
 };
 
