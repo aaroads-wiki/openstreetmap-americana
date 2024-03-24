@@ -25,12 +25,22 @@ export function getImageNameExpression(routeIndex) {
 }
 
 function routeConcurrency(routeIndex) {
-  return [
+  let today = new Date();
+  let fool = today.getMonth() === 3 && today.getDate() === 1;
+  let concurrency = [
     "case",
     ["!=", ["get", "route_" + routeIndex], null],
     ["image", getImageNameExpression(routeIndex)],
-    ["literal", ""],
   ];
+  if (fool && routeIndex === 3) {
+    concurrency.push(["==", ["get", "route_1"], "US:CA=99"]);
+    concurrency.push(["image", "shield\nUS:I:Future=7"]);
+  } else if (fool && routeIndex === 4) {
+    concurrency.push(["==", ["get", "route_1"], "US:CA=99"]);
+    concurrency.push(["image", "shield\nUS:I:Future=9"]);
+  }
+  concurrency.push(["literal", ""]);
+  return concurrency;
 }
 
 /**
