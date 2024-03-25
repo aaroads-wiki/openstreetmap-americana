@@ -202,6 +202,62 @@ export const city = {
   metadata: {},
 };
 
+export const controlcities = {
+  id: "controlcities",
+  type: "symbol",
+  paint: cityLabelPaint,
+  layout: {
+    "text-font": ["Americana-Bold"],
+    "text-size": {
+      base: 1.2,
+      stops: [
+        [4, 11],
+        [7, 14],
+        [11, 24],
+      ],
+    },
+    "icon-image": [
+      "match",
+      ["get", "capital"],
+      2,
+      "place_star_in_circle",
+      3,
+      "place_star",
+      4,
+      "place_star",
+      "place_dot",
+    ],
+    "icon-size": {
+      base: 1.2,
+      stops: [
+        [4, 0.4],
+        [7, 0.5],
+        [11, 0.9],
+      ],
+    },
+    "text-field": Label.localizedNameWithLocalGloss,
+    "text-anchor": "bottom",
+    "text-variable-anchor": [
+      "bottom",
+      "bottom-right",
+      "bottom-left",
+      "right",
+      "left",
+    ],
+    "text-justify": "auto",
+    "text-radial-offset": ["match", ["get", "capital"], 2, 0.7, 0.5],
+    "icon-optional": false,
+    "text-max-width": 8,
+    "icon-padding": 0,
+    "text-padding": 1,
+    "icon-allow-overlap": false,
+  },
+  source: "controlcities",
+  minzoom: 4,
+  maxzoom: 12,
+  metadata: {},
+};
+
 export const state = {
   id: "place_state",
   type: "symbol",
