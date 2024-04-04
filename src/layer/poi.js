@@ -19,6 +19,14 @@ var iconDefs = {
     color: Color.poi.consumer,
     description: "Bar or pub",
   },
+  bookstore: {
+    classes: {
+      library: ["books"],
+    },
+    sprite: "poi_book_upright",
+    color: Color.poi.consumer,
+    description: "Bookstore",
+  },
   bus_station: {
     classes: {
       bus: ["bus_station"],
@@ -139,6 +147,14 @@ var iconDefs = {
     sprite: "poi_police_shield",
     color: Color.poi.infrastructure,
     description: "Police station",
+  },
+  post_office: {
+    classes: {
+      post: ["post_office"],
+    },
+    sprite: "poi_envelope",
+    color: Color.poi.infrastructure,
+    description: "Post office",
   },
   pow_buddhist: {
     classes: {
@@ -305,6 +321,7 @@ export const poi = {
       [
         ...getSubclasses(iconDefs.fuel),
         ...getSubclasses(iconDefs.bar),
+        ...getSubclasses(iconDefs.bookstore),
         ...getSubclasses(iconDefs.coffee),
         ...getSubclasses(iconDefs.supermarket),
         ...getSubclasses(iconDefs.car_shop),
@@ -331,6 +348,7 @@ export const poi = {
         "college",
         "library",
         "townhall",
+        ...getSubclasses(iconDefs.post_office),
         ...getSubclasses(iconDefs.pow_christian),
         ...getSubclasses(iconDefs.pow_buddhist),
         ...getSubclasses(iconDefs.pow_hindu),
@@ -361,6 +379,7 @@ export const poi = {
         "museum",
         "police",
         ...getSubclasses(iconDefs.fuel),
+        ...getSubclasses(iconDefs.post_office),
         ...getSubclasses(iconDefs.pow_buddhist),
         ...getSubclasses(iconDefs.pow_christian),
         ...getSubclasses(iconDefs.pow_hindu),
@@ -377,6 +396,7 @@ export const poi = {
       15,
       [
         ...getSubclasses(iconDefs.bar),
+        ...getSubclasses(iconDefs.bookstore),
         ...getSubclasses(iconDefs.coffee),
         ...getSubclasses(iconDefs.car_shop),
         ...getSubclasses(iconDefs.car_repair),
