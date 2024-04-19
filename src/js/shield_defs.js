@@ -204,6 +204,9 @@ export function loadShields() {
     Color.shields.brown,
     Color.shields.white
   );
+  shields["CA:NS:S"] = {
+    notext: true,
+  };
 
   // Northwest Territories
   shields["CA:NT"] = {
@@ -1276,7 +1279,6 @@ export function loadShields() {
     "Lake",
     "Lake_of_the_Woods",
     "Le_Sueur",
-    "Lincoln",
     "Lyon",
     "Mahnomen",
     "Marshall",
@@ -1302,7 +1304,6 @@ export function loadShields() {
     "Redwood",
     "Renville",
     "Rice",
-    "Rock",
     "Roseau",
     "Saint_Louis",
     "Scott",
@@ -1325,11 +1326,7 @@ export function loadShields() {
     "Yellow_Medicine",
   ].forEach(
     (county) =>
-      ([
-        shields[`US:MN:${county}:CSAH`],
-        shields[`US:MN:${county}:CR`],
-        shields[`US:MN:${county}:Park_Access`],
-      ] = [
+      ([shields[`US:MN:${county}:CSAH`], shields[`US:MN:${county}:CR`]] = [
         pentagonUpShield(
           3,
           15,
@@ -1338,14 +1335,31 @@ export function loadShields() {
           Color.shields.white
         ),
         roundedRectShield(Color.shields.white, Color.shields.black),
-        trapezoidDownShield(
-          10,
-          Color.shields.brown,
-          Color.shields.white,
-          Color.shields.white,
-          2
-        ),
       ])
+  );
+  ["CSAH", "CR"].forEach(
+    (network) =>
+      (shields[`US:MN:Lincoln:${network}`] = pentagonUpShield(
+        3,
+        15,
+        Color.shields.blue,
+        Color.shields.yellow,
+        Color.shields.white
+      ))
+  );
+  ["CSAH", "CR"].forEach(
+    (network) =>
+      (shields[`US:MN:Rock:${network}`] = roundedRectShield(
+        Color.shields.white,
+        Color.shields.black
+      ))
+  );
+  shields[`US:MN:Hennepin:Park_Access`] = trapezoidDownShield(
+    10,
+    Color.shields.brown,
+    Color.shields.white,
+    Color.shields.white,
+    2
   );
 
   // Missouri
@@ -3638,6 +3652,45 @@ export function loadShields() {
   shields["NZ:WRR"] = circleShield(Color.shields.white, Color.shields.black);
 
   // Ref-specific cases. Each entry should be documented in CONTRIBUTE.md
+
+  shields["CA:NS:S"].overrideByName = {
+    "Bras d'Or Lakes Scenic Drive": {
+      spriteBlank: "shield_ca_ns_s_bdolsd",
+    },
+    "Ceilidh Trail": {
+      spriteBlank: "shield_ca_ns_s_cet",
+    },
+    "Cabot Trail": {
+      spriteBlank: "shield_ca_ns_s_ct",
+    },
+    "Digby Neck and Islands Scenic Drive": {
+      spriteBlank: "shield_ca_ns_s_dnisd",
+    },
+    "Evangeline Trail": {
+      spriteBlank: "shield_ca_ns_s_et",
+    },
+    "Fleur-de-lis Trail": {
+      spriteBlank: "shield_ca_ns_s_fdlt",
+    },
+    "Glooscap Trail": {
+      spriteBlank: "shield_ca_ns_s_gt",
+    },
+    "Kejimkujik Scenic Drive": {
+      spriteBlank: "shield_ca_ns_s_ksd",
+    },
+    "Lighthouse Route": {
+      spriteBlank: "shield_ca_ns_s_lr",
+    },
+    "Marine Drive": {
+      spriteBlank: "shield_ca_ns_s_md",
+    },
+    "Marconi Trail": {
+      spriteBlank: "shield_ca_ns_s_mt",
+    },
+    "Sunrise Trail": {
+      spriteBlank: "shield_ca_ns_s_st",
+    },
+  };
 
   shields["CA:ON:primary"].overrideByRef = {
     QEW: {
