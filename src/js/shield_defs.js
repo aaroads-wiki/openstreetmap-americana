@@ -103,6 +103,14 @@ export function loadShields() {
   };
 
   // NORTH AMERICA
+  shields["GLCT"] = {
+    notext: true,
+  };
+  shields["GLCT:Loop"] = banneredShield(
+    shields["GLCT"],
+    ["LOOP"],
+    Color.shields.brown
+  );
 
   // Canada
   shields["CA:transcanada"] = {
@@ -480,6 +488,8 @@ export function loadShields() {
 
   shields["US:US:Bypass"] = banneredShield(shields["US:US"], ["BYP"]);
 
+  shields["US:US:Future"] = banneredShield(shields["US:US"], ["FUT"]);
+
   shields["US:US:Business"] = banneredShield(shields["US:US"], ["BUS"]);
   shields["US:US:Business:Alternate"] = banneredShield(shields["US:US"], [
     "BUS",
@@ -507,7 +517,9 @@ export function loadShields() {
     Color.shields.brown
   );
 
-  // Federal Agencies
+  // US Federal Agencies
+
+  // Bureau of Indian Affairs
   shields["US:BIA"] = {
     spriteBlank: "shield_us_bia",
     textColor: Color.shields.black,
@@ -520,39 +532,48 @@ export function loadShields() {
     },
   };
 
+  // Department of Energy: see California
+  // National Park Service
   shields["US:NPS:Blue_Ridge"] = {
     noref: {
       spriteBlank: "shield_us_nps_brp",
     },
   };
-
   shields["US:NPS:Natchez_Trace"] = {
     noref: {
       spriteBlank: "shield_us_nps_ntp",
     },
   };
 
-  shields["US:GRR"] = {
-    noref: {
-      spriteBlank: "shield_us_grr",
-    },
-  };
+  // Other multistate routes
 
+  // Great Lakes Seaway Trail
   shields["US:GLST"] = {
     noref: {
       spriteBlank: "shield_us_glst",
     },
   };
 
-  shields["GLCT"] = {
+  // Great River Road
+  shields["US:GRR"] = {
+    noref: {
+      spriteBlank: "shield_us_grr",
+    },
+  };
+
+  // Lincoln Heritage Trail
+  shields["US:LHT"] = {
+    spriteBlank: "shield_us_lht",
     notext: true,
   };
 
-  shields["GLCT:Loop"] = banneredShield(
-    shields["GLCT"],
-    ["LOOP"],
-    Color.shields.brown
-  );
+  // Ohio River Scenic Byway
+  shields["US:ORSB"] = {
+    spriteBlank: ["shield_us_orsb"],
+    notext: true,
+  };
+
+  // US States
 
   // Alaska
   shields["US:AK"] = {
@@ -793,6 +814,9 @@ export function loadShields() {
     notext: true,
   };
 
+  // Department of Energy
+  shields["US:DOE:Hanford"] = shields["US:CA"];
+
   // Colorado
   shields["US:CO"] = {
     spriteBlank: "shield_us_co",
@@ -919,6 +943,7 @@ export function loadShields() {
     Color.shields.blue,
     Color.shields.yellow
   );
+  shields["US:FL:CR:Truck"] = banneredShield(shields["US:FL:CR"], ["TRK"]);
 
   // Georgia
   shields["US:GA"] = {
@@ -978,6 +1003,7 @@ export function loadShields() {
       bottom: 9,
     },
   };
+  shields["US:ID:Business"] = banneredShield(shields["US:ID"], ["BUS"]);
 
   // Illinois
   shields["US:IL"] = roundedRectShield(
@@ -1068,6 +1094,7 @@ export function loadShields() {
       bottom: 2,
     },
   };
+  shields["US:KS:Truck"] = banneredShield(shields["US:KS"], ["TRK"]);
   shields["US:KS:Turnpike"] = {
     noref: {
       spriteBlank: "shield_us_ks_turnpike",
@@ -1241,58 +1268,26 @@ export function loadShields() {
       bottom: 3,
     },
   };
+  shields["US:MN:Intercounty"] = roundedRectShield(
+    Color.shields.blue,
+    Color.shields.yellow,
+    Color.shields.white
+  );
   [
-    "Aitkin",
-    "Anoka",
-    "Becker",
-    "Beltrami",
-    "Benton",
-    "Big_Stone",
-    "Blue_Earth",
     "Brown",
-    "Carlton",
-    "Carver",
-    "Cass",
-    "Chippewa",
     "Chisago",
-    "Clay",
     "Clearwater",
-    "Cook",
     "Cottonwood",
-    "Crow_Wing",
     "Dakota",
-    "Dodge",
-    "Douglas",
-    "Faribault",
-    "Fillmore",
     "Freeborn",
     "Goodhue",
-    "Grant",
-    "Hennepin",
-    "Houston",
-    "Hubbard",
     "Isanti",
-    "Itasca",
     "Jackson",
-    "Kanabec",
-    "Kandiyohi",
     "Kittson",
-    "Koochiching",
     "Lac_qui_Parle",
-    "Lake",
-    "Lake_of_the_Woods",
-    "Le_Sueur",
-    "Lyon",
-    "Mahnomen",
-    "Marshall",
-    "Martin",
     "McLeod",
     "Meeker",
-    "Mille_Lacs",
     "Morrison",
-    "Mower",
-    "Murray",
-    "Nicollet",
     "Nobles",
     "Norman",
     "Olmsted",
@@ -1301,30 +1296,19 @@ export function loadShields() {
     "Pine",
     "Pipestone",
     "Polk",
-    "Pope",
-    "Ramsey",
     "Red_Lake",
     "Redwood",
     "Renville",
-    "Rice",
     "Roseau",
     "Saint_Louis",
-    "Scott",
-    "Sherburne",
     "Sibley",
     "Stearns",
-    "Steele",
     "Stevens",
-    "Swift",
     "Todd",
     "Traverse",
     "Wabasha",
     "Wadena",
-    "Waseca",
     "Washington",
-    "Watonwan",
-    "Wilkin",
-    "Winona",
     "Wright",
     "Yellow_Medicine",
   ].forEach(
@@ -1340,22 +1324,78 @@ export function loadShields() {
         roundedRectShield(Color.shields.white, Color.shields.black),
       ])
   );
-  ["CSAH", "CR"].forEach(
-    (network) =>
-      (shields[`US:MN:Lincoln:${network}`] = pentagonUpShield(
-        3,
-        15,
-        Color.shields.blue,
-        Color.shields.yellow,
-        Color.shields.white
-      ))
+  [
+    "Anoka",
+    "Blue_Earth",
+    "Fillmore",
+    "Hennepin",
+    "Kandiyohi",
+    "Lincoln",
+    "Mower",
+    "Murray",
+    "Pope",
+    "Ramsey",
+    "Scott",
+    "Wilkin",
+  ].forEach((county) =>
+    ["CSAH", "CR"].forEach(
+      (network) =>
+        (shields[`US:MN:${county}:${network}`] = pentagonUpShield(
+          3,
+          15,
+          Color.shields.blue,
+          Color.shields.yellow,
+          Color.shields.white
+        ))
+    )
   );
-  ["CSAH", "CR"].forEach(
-    (network) =>
-      (shields[`US:MN:Rock:${network}`] = roundedRectShield(
-        Color.shields.white,
-        Color.shields.black
-      ))
+  [
+    "Aitkin",
+    "Becker",
+    "Beltrami",
+    "Benton",
+    "Big_Stone",
+    "Carlton",
+    "Carver",
+    "Cass",
+    "Chippewa",
+    "Clay",
+    "Cook",
+    "Crow_Wing",
+    "Dodge",
+    "Douglas",
+    "Faribault",
+    "Grant",
+    "Houston",
+    "Hubbard",
+    "Itasca",
+    "Kanabec",
+    "Koochiching",
+    "Lake",
+    "Lake_of_the_Woods",
+    "Le_Sueur",
+    "Lyon",
+    "Mahnomen",
+    "Marshall",
+    "Martin",
+    "Mille_Lacs",
+    "Nicollet",
+    "Rice",
+    "Rock",
+    "Sherburne",
+    "Steele",
+    "Swift",
+    "Waseca",
+    "Watonwan",
+    "Winona",
+  ].forEach((county) =>
+    ["CSAH", "CR"].forEach(
+      (network) =>
+        (shields[`US:MN:${county}:${network}`] = roundedRectShield(
+          Color.shields.white,
+          Color.shields.black
+        ))
+    )
   );
   shields[`US:MN:Hennepin:Park_Access`] = trapezoidDownShield(
     10,
@@ -1510,6 +1550,7 @@ export function loadShields() {
   };
   shields["US:ND:Alternate"] = banneredShield(shields["US:ND"], ["ALT"]);
   shields["US:ND:Business"] = banneredShield(shields["US:ND"], ["BUS"]);
+  shields["US:ND:Bypass"] = banneredShield(shields["US:ND"], ["BYP"]);
   shields["US:ND:Truck"] = banneredShield(shields["US:ND"], ["TRK"]);
   [
     "Barnes",
@@ -2202,6 +2243,11 @@ export function loadShields() {
     ["ALT"],
     Color.shields.blue
   );
+  shields["US:SC:Connector"] = banneredShield(
+    shields["US:SC"],
+    ["CONN"],
+    Color.shields.blue
+  );
 
   // South Dakota
   shields["US:SD"] = {
@@ -2731,17 +2777,6 @@ export function loadShields() {
         Color.shields.yellow
       ))
   );
-
-  // Multistate auto trails
-
-  shields["US:LHT"] = {
-    spriteBlank: "shield_us_lht",
-    notext: true,
-  };
-  shields["US:ORSB"] = {
-    spriteBlank: ["shield_us_orsb"],
-    notext: true,
-  };
 
   // SOUTH AMERICA
 
@@ -3356,6 +3391,31 @@ export function loadShields() {
     34
   );
 
+  // Croatia
+  shields["HR:Autoceste"] = hexagonVerticalShield(
+    3,
+    Color.shields.green,
+    Color.shields.white,
+    Color.shields.white,
+    0,
+    34
+  );
+  shields["HR:Državne ceste"] = roundedRectShield(
+    Color.shields.blue,
+    Color.shields.white,
+    Color.shields.white
+  );
+  shields["HR:Županijske ceste"] = roundedRectShield(
+    Color.shields.yellow,
+    Color.shields.black,
+    Color.shields.black
+  );
+  shields["HR:Lokalne ceste"] = roundedRectShield(
+    Color.shields.white,
+    Color.shields.black,
+    Color.shields.black
+  );
+
   // Iceland
   shields["IS"] = roundedRectShield(
     Color.shields.white,
@@ -3671,6 +3731,12 @@ export function loadShields() {
   // Ref-specific cases. Each entry should be documented in CONTRIBUTE.md
 
   shields["CA:NS:S"].overrideByName = {
+    "A. Murray MacKay Bridge": {
+      spriteBlank: "shield_ca_ns_s_mkb",
+    },
+    "Angus L. MacDonald Bridge": {
+      spriteBlank: "shield_ca_ns_s_mdb",
+    },
     "Bras d'Or Lakes Scenic Drive": {
       spriteBlank: "shield_ca_ns_s_bdolsd",
     },
