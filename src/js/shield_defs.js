@@ -361,6 +361,32 @@ export function loadShields() {
   shields["CA:ON:Muskoka:West"] = banneredShield(shields["CA:ON:Muskoka"], [
     "WEST",
   ]);
+  shields["CA:ON:Hamilton:Expressway"] = {
+    notext: true,
+    overrideByName: {
+      "Lincoln M. Alexander Parkway": {
+        spriteBlank: "shield_ca_on_hamilton_blue",
+      },
+      "Red Hill Valley Parkway": {
+        spriteBlank: "shield_ca_on_hamilton_green",
+      },
+    },
+  };
+  shields["CA:ON:Toronto:Expressway"] = {
+    spriteBlank: "shield_ca_on_toronto",
+    textColor: Color.shields.black,
+    textLayout: textConstraint("ellipse"),
+    padding: {
+      left: 5,
+      right: 5,
+      top: 5,
+      bottom: 5,
+    },
+    refsByName: {
+      "Don Valley Parkway": "DV",
+      "Gardiner Expressway": "G",
+    },
+  };
 
   // Prince Edward Island
   shields["CA:PE"] = {
@@ -450,13 +476,14 @@ export function loadShields() {
     padding: {
       left: 4,
       right: 4,
-      top: 5,
+      top: 6,
       bottom: 5,
     },
   };
 
   shields["US:I:Alternate"] = banneredShield(shields["US:I"], ["ALT"]);
   shields["US:I:Future"] = banneredShield(shields["US:I"], ["FUT"]);
+  shields["US:I:Spur"] = banneredShield(shields["US:I"], ["SPUR"]);
   shields["US:I:Truck"] = banneredShield(shields["US:I"], ["TRK"]);
   shields["US:I:Express"] = banneredShield(shields["US:I"], ["EXPR"]);
   shields["US:I:Express:Toll"] = shields["US:I:Express"];
@@ -676,6 +703,14 @@ export function loadShields() {
         Color.shields.yellow
       ))
   );
+  shields["US:AL:Baldwin:Baldwin_Beach_Express"] = {
+    ...roundedRectShield(Color.shields.green, Color.shields.white),
+    ref: "BBX",
+  };
+  shields["US:AL:Baldwin:Foley_Beach_Express"] = {
+    spriteBlank: "shield_us_al_foley",
+    notext: true,
+  };
 
   // Arizona
   shields["US:AZ:Scenic"] = {
@@ -1804,6 +1839,22 @@ export function loadShields() {
     },
   };
   shields["US:NY:Truck"] = banneredShield(shields["US:NY"], ["TRK"]);
+  shields["US:NY:Inner_Loop"] = {
+    ...trapezoidDownShield(
+      10,
+      Color.shields.white,
+      Color.shields.black,
+      Color.shields.black,
+      4
+    ),
+    padding: {
+      left: 4,
+      right: 4,
+      top: 3,
+      bottom: 3,
+    },
+  };
+  shields["US:NY:Inner_Loop"].ref = "LOOP";
   shields["US:NY:Thruway"] = {
     noref: {
       spriteBlank: "shield_us_ny_thruway",
@@ -2540,7 +2591,7 @@ export function loadShields() {
     padding: {
       left: 4,
       right: 4,
-      top: 5.5,
+      top: 6,
       bottom: 5,
     },
   };
@@ -2884,6 +2935,18 @@ export function loadShields() {
     shields["GH:regional"] =
       roundedRectShield(Color.shields.yellow, Color.shields.black);
 
+  // Madagascar
+  shields["MG:RN-road"] = roundedRectShield(
+    Color.shields.red,
+    Color.shields.white
+  );
+
+  // Niger
+  shields["NE:N-roads"] = roundedRectShield(
+    Color.shields.red,
+    Color.shields.white
+  );
+
   // ASIA
 
   // Armenia
@@ -3196,6 +3259,10 @@ export function loadShields() {
     Color.shields.black,
     0,
     34
+  );
+  shields["TR:national"] = roundedRectShield(
+    Color.shields.blue,
+    Color.shields.white
   );
 
   // Taiwan
