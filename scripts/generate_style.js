@@ -22,7 +22,7 @@ let opts = program.opts();
 let style = Style.build(
   config.OPENMAPTILES_URL,
   "https://aaroads-wiki.github.io/openstreetmap-americana/sprites/sprite",
-  "https://osm-americana.github.io/fontstack66/{fontstack}/{range}.pbf",
+  "https://font.americanamap.org/{fontstack}/{range}.pbf",
   opts.locales
 );
 
