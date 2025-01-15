@@ -8,7 +8,7 @@ _A quintessentially American map style_ [🗺 View the map](https://aaroads-wiki
 
 <br />
 
-The [AARoads Wiki](https://wiki.aaroads.com/) features this fork of [OpenStreetMap Americana](https://github.com/zelonewolf/openstreetmap-americana/) in [countless infoboxes and other contexts](https://wiki.aaroads.com/wiki/AARoads:Maps), making it easy for visitors to find their bearings as they read the mellifluous article text. Americana was chosen for its reliance on freely licensed, community-maintained OpenStreetMap data, its use of modern map technology, and its adherence to a visual style that North American roadgeeks would feel right at home in.
+The [AARoads Wiki](https://wiki.aaroads.com/) features this fork of [OpenStreetMap Americana](https://github.com/osm-americana/openstreetmap-americana/) in [countless infoboxes and other contexts](https://wiki.aaroads.com/wiki/AARoads:Maps), making it easy for visitors to find their bearings as they read the mellifluous article text. Americana was chosen for its reliance on freely licensed, community-maintained OpenStreetMap data, its use of modern map technology, and its adherence to a visual style that North American roadgeeks would feel right at home in.
 
 This fork retains Americana’s characteristic shields but tweaks the colors to match [a color scheme for static maps](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_U.S._Roads/Maps_task_force#Standards) that the AARoads Wiki’s predecessor, the English Wikipedia’s WikiProject U.S. Roads, [adopted in 2006](https://en.wikipedia.org/wiki/Wikipedia_talk:WikiProject_U.S._Roads/Maps_task_force/Archive_1#Voting) with minor subsequent adjustments.
 
