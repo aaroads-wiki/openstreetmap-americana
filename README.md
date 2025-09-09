@@ -12,6 +12,10 @@ The [AARoads Wiki](https://wiki.aaroads.com/) features this fork of [OpenStreetM
 
 This fork retains Americana’s characteristic shields but tweaks the colors to match [a color scheme for static maps](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_U.S._Roads/Maps_task_force#Standards) that the AARoads Wiki’s predecessor, the English Wikipedia’s WikiProject U.S. Roads, [adopted in 2006](https://en.wikipedia.org/wiki/Wikipedia_talk:WikiProject_U.S._Roads/Maps_task_force/Archive_1#Voting) with minor subsequent adjustments.
 
+## OpenStreetMap US
+
+OpenStreetMap Americana is a community project supported by [OSM US](https://openstreetmap.us), the OpenStreetMap local chapter for the United States. OSM US supports the project by providing tile rendering and other computing infrastructure.
+
 ## How to use
 
 You can install the OpenStreetMap Americana package and [deploy it anywhere](CONTRIBUTING.md#Production%20builds) as a static webpage. For your convenience, we’ve deployed it [on GitHub Pages](https://aaroads-wiki.github.io/openstreetmap-americana/). Click the Legend button to learn the meaning of each symbol, line, and color based on the features currently visible on the map.
