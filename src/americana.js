@@ -2,7 +2,7 @@
 
 import config from "./config.js";
 
-import * as Label from "./constants/label.js";
+import { getLanguageFromURL, getLocales } from "@americana/diplomat";
 
 import * as languageLabel from "./js/language_label.js";
 
@@ -41,6 +41,7 @@ export const map = createMap(
     center: [-94, 40.5],
     zoom: 4,
     attributionControl: false,
+    experimentalZoomLevelsToOverscale: 0,
   },
   debugOptions
 );
@@ -79,8 +80,8 @@ function shieldDefLoad(shields) {
 
   window.addEventListener("hashchange", (event) => {
     upgradeLegacyHash();
-    let oldLanguage = Label.getLanguageFromURL(new URL(event.oldURL));
-    let newLanguage = Label.getLanguageFromURL(new URL(event.newURL));
+    let oldLanguage = getLanguageFromURL(new URL(event.oldURL));
+    let newLanguage = getLanguageFromURL(new URL(event.newURL));
     if (oldLanguage !== newLanguage) {
       console.log(`Changed to ${newLanguage}`);
       hotReloadMap();
@@ -102,7 +103,7 @@ function hotReloadMap() {
 }
 
 export function updateLanguageLabel() {
-  languageLabel.displayLocales(Label.getLocales());
+  languageLabel.displayLocales(getLocales());
   legendControl.onLanguageChange();
 }
 

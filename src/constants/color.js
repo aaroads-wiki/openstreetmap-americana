@@ -18,8 +18,11 @@ export const hueBorderCasing = 281;
 export const border = "hsl(0, 0%, 61%)";
 export const borderCasing = `hsl(${hueBorderCasing}, 35%, 86%)`;
 
+//Greenspace colors
 export const parkFill = "hsl(110, 41%, 75%)";
+export const cemeteryFill = "hsl(85, 18%, 65%)";
 export const parkOutline = "hsla(110, 41%, 70%, 50%)";
+export const cemeteryOutline = "hsl(85, 18%, 50%, 50%)";
 export const parkLabel = "hsl(110, 71%, 29%)";
 export const parkLabelHalo = "hsl(90, 27%, 94%)";
 
@@ -92,7 +95,7 @@ export const hue = {
 export const poi = {
   infrastructure: palette.blue,
   consumer: palette.texas_orange,
-  //outdoor:
+  outdoor: palette.green,
   attraction: palette.brown,
   airport: `hsl(${hue.airport}, 100%, 28%)`,
   transport: palette.mauve,

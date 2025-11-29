@@ -1,6 +1,6 @@
 "use strict";
 
-import * as Label from "../constants/label.js";
+import { localizeLayers } from "@americana/diplomat";
 
 import * as lyrAboriginal from "./aboriginal.js";
 import * as lyrAerialway from "./aerialway.js";
@@ -37,6 +37,7 @@ export function build(locales) {
     lyrAboriginal.fill,
     lyrPark.fill,
     lyrAeroway.fill,
+    lyrPark.cemeteryFill,
     lyrPark.parkFill,
 
     lyrBoundary.countyCasing,
@@ -56,6 +57,7 @@ export function build(locales) {
     lyrPark.outline,
     lyrAeroway.outline,
     lyrPark.parkOutline,
+    lyrPark.cemeteryOutline,
 
     lyrBoundary.city,
     lyrBoundary.county,
@@ -169,6 +171,7 @@ export function build(locales) {
     lyrHighwayExit.exits,
 
     lyrPoi.poi,
+    lyrPoi.iconlessPoi,
 
     lyrPlace.state,
     lyrPlace.neighborhood,
@@ -185,7 +188,7 @@ export function build(locales) {
     lyrPlace.continent
   );
 
-  Label.localizeLayers(layers, locales);
+  localizeLayers(layers, locales);
 
   return layers;
 }

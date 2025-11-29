@@ -1,7 +1,7 @@
 "use strict";
 
 import * as Color from "../constants/color.js";
-import * as Label from "../constants/label.js";
+import { countryNamesByCode } from "@americana/diplomat";
 
 export const city = {
   id: "boundary_city",
@@ -303,7 +303,7 @@ function getCountryName(code) {
     "code",
     code,
     "countryNamesByCode",
-    ["literal", Label.countryNamesByCode],
+    ["literal", countryNamesByCode],
     [
       "coalesce",
       ["get", ["var", "code"], ["var", "countryNamesByCode"]],
