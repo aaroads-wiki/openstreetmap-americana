@@ -686,6 +686,7 @@ export function loadShields() {
       "US:US:Business:Truck": ["BUS", "TRK"],
       "US:US:Alternate": ["ALT"],
       "US:US:Alternate:Truck:Business": ["ALT", "TRK", "BUS"],
+      "US:US:Express": ["EXPR"],
     },
   };
 
@@ -752,6 +753,12 @@ export function loadShields() {
   };
 
   // Other multistate routes
+
+  // Chicago-Kansas City Expressway
+  shields["US:CKC"] = {
+    spriteBlank: "shield_us_ckc",
+    notext: true,
+  };
 
   // Great Lakes Seaway Trail
   shields["US:GLST"] = {
@@ -1074,12 +1081,12 @@ export function loadShields() {
   };
   shields["US:CO:NW"] = {
     spriteBlank: "shield_us_co_nw",
-    textColor: Color.shields.black,
+    textColor: Color.shields.blue,
     padding: {
       left: 3,
-      right: 6,
-      top: 2,
-      bottom: 16,
+      right: 3,
+      top: 12,
+      bottom: 2,
     },
   };
   [
@@ -1305,6 +1312,7 @@ export function loadShields() {
     "Clay",
     "Clinton",
     "Coles",
+    "Cook",
     "Cumberland",
     "DeKalb",
     "De_Witt",
@@ -1336,6 +1344,7 @@ export function loadShields() {
     "Schuyler",
     "Shelby",
     "Saint_Clair",
+    "Will",
     "Winnebago",
     "Woodford",
   ].forEach(
@@ -3714,6 +3723,23 @@ export function loadShields() {
     Color.shields.white,
     30
   );
+
+  shields["KR:42:Hongcheon"] =
+    shields["KR:45:Gochang"] =
+    shields["KR:48:Namhae"] =
+      roundedRectShield(
+        Color.shields.yellow,
+        Color.shields.white,
+        Color.shields.blue
+      );
+  shields["KR:27:Gunwi"] = shields["KR:45:Wanju"] = roundedRectShield(
+    Color.shields.yellow,
+    Color.shields.white,
+    Color.shields.blue,
+    30,
+    0
+  );
+
   shields["KR:local"] = roundedRectShield(
     Color.shields.yellow,
     Color.shields.white,
@@ -3729,6 +3755,7 @@ export function loadShields() {
     "30",
     "31",
     "50",
+    "41:Gapyeong",
     "41:Goyang",
     "41:Gwacheon",
     "41:Gwangmyeong",
@@ -3935,6 +3962,16 @@ export function loadShields() {
   shields["e-road"] = roundedRectShield(
     Color.shields.green,
     Color.shields.white
+  );
+
+  // Albania
+  shields["AL:A"] = octagonVerticalShield(
+    2,
+    10,
+    Color.shields.green,
+    Color.shields.white,
+    Color.shields.white,
+    0
   );
 
   // Austria
@@ -4309,6 +4346,16 @@ export function loadShields() {
     },
   };
 
+  // Macedonia
+  shields["mk:national"] = hexagonVerticalShield(
+    3,
+    Color.shields.green,
+    Color.shields.white,
+    Color.shields.white,
+    0,
+    34
+  );
+
   // Poland
   shields["PL:expressway"] = shields["PL:motorway"] = roundedRectShield(
     Color.shields.red,
@@ -4340,6 +4387,16 @@ export function loadShields() {
   shields["ru:national"] = roundedRectShield(
     Color.shields.blue,
     Color.shields.white
+  );
+
+  // Serbia
+  shields["RS:motorway"] = hexagonVerticalShield(
+    3,
+    Color.shields.green,
+    Color.shields.white,
+    Color.shields.white,
+    0,
+    34
   );
 
   // Sweden
