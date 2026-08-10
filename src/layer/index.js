@@ -22,6 +22,7 @@ import * as lyrWater from "./water.js";
 import * as lyrBuilding from "./building.js";
 import * as lyrHighwayExit from "./highway_exit.js";
 import * as lyrFerry from "./ferry.js";
+import * as lyrPeak from "./peak.js";
 
 /**
  * Builds the Americana layers property.
@@ -39,6 +40,7 @@ export function build(locales) {
     lyrAeroway.fill,
     lyrPark.cemeteryFill,
     lyrPark.parkFill,
+    lyrPark.pitchFill,
 
     lyrBoundary.countyCasing,
     lyrBoundary.regionCasing,
@@ -58,6 +60,7 @@ export function build(locales) {
     lyrAeroway.outline,
     lyrPark.parkOutline,
     lyrPark.cemeteryOutline,
+    lyrPark.pitchOutline,
 
     lyrBoundary.city,
     lyrBoundary.county,
@@ -170,6 +173,7 @@ export function build(locales) {
 
     lyrHighwayExit.exits,
 
+    lyrPeak.peak,
     lyrPoi.poi,
     lyrPoi.iconlessPoi,
 

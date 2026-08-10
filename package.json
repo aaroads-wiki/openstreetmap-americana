@@ -38,7 +38,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "@americana/diplomat": "^0.5.0",
+    "@americana/diplomat": "^0.6.0",
     "@americana/maplibre-shield-generator": "*",
     "color-rgba": "^2.4.0",
     "events": "^3.3.0",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@basemaps/sprites": "^7.0.0",
     "@mapbox/vector-tile": "^2.0.4",
-    "@maplibre/maplibre-gl-style-spec": "^24.3.1",
+    "@maplibre/maplibre-gl-style-spec": "^26.1.0",
     "@playwright/test": "^1.38.1",
     "@types/benchmark": "^2.1.5",
     "@types/chai": "^4.3.4",

@@ -21,8 +21,10 @@ export const borderCasing = `hsl(${hueBorderCasing}, 35%, 86%)`;
 //Greenspace colors
 export const parkFill = "hsl(110, 41%, 75%)";
 export const cemeteryFill = "hsl(85, 18%, 65%)";
+export const pitchFill = "hsl(110, 41%, 85%)";
 export const parkOutline = "hsla(110, 41%, 70%, 50%)";
 export const cemeteryOutline = "hsl(85, 18%, 50%, 50%)";
+export const pitchOutline = "hsla(110, 41%, 80%, 50%)";
 export const parkLabel = "hsl(110, 71%, 29%)";
 export const parkLabelHalo = "hsl(90, 27%, 94%)";
 

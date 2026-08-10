@@ -578,7 +578,7 @@ export function loadShields() {
     "OAX",
     "PUE",
     "QRO",
-    "Q.ROO",
+    "QROO",
     "SLP",
     "SIN",
     "SON",
@@ -632,6 +632,9 @@ export function loadShields() {
       bottom: 8,
     },
   };
+
+  // Panama
+  shields["PA:national"] = badgeShieldCrossbar;
 
   // United States
 
@@ -1015,6 +1018,7 @@ export function loadShields() {
       "US:AZ:Spur": ["SPUR"],
       "US:AZ:Loop": ["LOOP"],
       "US:AZ:Business": ["BUS"],
+      "US:AZ:Truck": ["TRK"],
     },
   };
 
@@ -1292,7 +1296,7 @@ export function loadShields() {
   // Idaho
   shields["US:ID"] = {
     spriteBlank: ["shield_us_id_2", "shield_us_id_3"],
-    textColor: Color.shields.black,
+    textColor: Color.shields.white,
     padding: {
       left: 5.5,
       right: 1.5,
@@ -1407,8 +1411,12 @@ export function loadShields() {
       top: 2,
       bottom: 2,
     },
+    bannerMap: {
+      "US:KS:Alternate": ["ALT"],
+      "US:KS:Spur": ["SPUR"],
+      "US:KS:Truck": ["TRK"],
+    },
   };
-  shields["US:KS:Truck"] = banneredShield(shields["US:KS"], ["TRK"]);
   shields["US:KS:Turnpike"] = {
     noref: {
       spriteBlank: "shield_us_ks_turnpike",
@@ -4093,6 +4101,30 @@ export function loadShields() {
   // Switzerland
   shields["ch:national"] = roundedRectShield(
     Color.shields.blue,
+    Color.shields.white
+  );
+
+  // Cyprus
+  shields["CY:motorway"] = hexagonVerticalShield(
+    2,
+    Color.shields.green,
+    Color.shields.yellow,
+    Color.shields.yellow,
+    0
+  );
+  shields["CY:B"] =
+    shields["CY:E"] =
+    shields["CY:F"] =
+      roundedRectShield(
+        Color.shields.blue,
+        Color.shields.yellow,
+        Color.shields.yellow
+      );
+
+  // Northern Cyprus
+  shields["CY:national"] = roundedRectShield(
+    Color.shields.blue,
+    Color.shields.white,
     Color.shields.white
   );
 
