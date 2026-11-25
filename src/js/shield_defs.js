@@ -171,6 +171,11 @@ export function loadShields() {
     Color.shields.black,
     30
   );
+  shields["CA:AB:QEII"] = {
+    noref: {
+      spriteBlank: "shield_ca_ab_qeii",
+    },
+  };
 
   // British Columbia
   shields["CA:BC"] = {
@@ -713,8 +718,8 @@ export function loadShields() {
     padding: {
       left: 1,
       right: 1,
-      top: 3,
-      bottom: 5,
+      top: 5,
+      bottom: 7,
     },
   };
 
@@ -769,6 +774,12 @@ export function loadShields() {
 
   // Other multistate routes
 
+  // Avenue of the Saints
+  shields["US:AotS"] = {
+    spriteBlank: "shield_us_aots",
+    notext: true,
+  };
+
   // Chicago-Kansas City Expressway
   shields["US:CKC"] = {
     spriteBlank: "shield_us_ckc",
@@ -805,6 +816,25 @@ export function loadShields() {
   shields["US:PIPC"] = {
     spriteBlank: ["shield_us_pipc"],
     notext: true,
+  };
+
+  // Native Sovereign Nations
+
+  // Navajo Nation
+  shields["US:Navajo"] = {
+    spriteBlank: [
+      "shield_us_navajo_2",
+      "shield_us_navajo_3",
+      "shield_us_navajo_4",
+    ],
+    textColor: Color.shields.black,
+    textLayout: textConstraint("ellipse"),
+    padding: {
+      left: 2,
+      right: 2,
+      top: 7,
+      bottom: 7,
+    },
   };
 
   // US States
@@ -923,9 +953,51 @@ export function loadShields() {
   };
 
   // Arizona
+  shields["US:AZ"] = {
+    spriteBlank: ["shield_us_az_2", "shield_us_az_3"],
+    textColor: Color.shields.black,
+    padding: {
+      left: 4,
+      right: 3,
+      top: 3,
+      bottom: 4,
+    },
+    bannerMap: {
+      "US:AZ:Spur": ["SPUR"],
+      "US:AZ:Loop": ["LOOP"],
+      "US:AZ:Business": ["BUS"],
+      "US:AZ:Truck": ["TRK"],
+    },
+  };
   shields["US:AZ:Scenic"] = {
     spriteBlank: "shield_us_az_scenic",
     notext: true,
+  };
+
+  ["Coconino", "Mohave", "Yavapai"].forEach(
+    (county) =>
+      (shields[`US:AZ:${county}`] = pentagonUpShield(
+        3,
+        15,
+        Color.shields.blue,
+        Color.shields.yellow
+      ))
+  );
+  shields["US:AZ:Apache"] = roundedRectShield(
+    Color.shields.white,
+    Color.shields.black
+  );
+
+  shields["US:AZ:Indian"] = {
+    spriteBlank: "shield_us_az_indian",
+    textColor: Color.shields.black,
+    textLayout: textConstraint("ellipse"),
+    padding: {
+      left: 1,
+      right: 1,
+      top: 3,
+      bottom: 5,
+    },
   };
 
   // Arkansas
@@ -1005,37 +1077,6 @@ export function loadShields() {
     },
   };
 
-  shields["US:AZ"] = {
-    spriteBlank: ["shield_us_az_2", "shield_us_az_3"],
-    textColor: Color.shields.black,
-    padding: {
-      left: 4,
-      right: 3,
-      top: 3,
-      bottom: 4,
-    },
-    bannerMap: {
-      "US:AZ:Spur": ["SPUR"],
-      "US:AZ:Loop": ["LOOP"],
-      "US:AZ:Business": ["BUS"],
-      "US:AZ:Truck": ["TRK"],
-    },
-  };
-
-  ["Coconino", "Mohave", "Yavapai"].forEach(
-    (county) =>
-      (shields[`US:AZ:${county}`] = pentagonUpShield(
-        3,
-        15,
-        Color.shields.blue,
-        Color.shields.yellow
-      ))
-  );
-  shields["US:AZ:Apache"] = roundedRectShield(
-    Color.shields.white,
-    Color.shields.black
-  );
-
   // California
   shields["US:CA"] = {
     spriteBlank: ["shield_us_ca_2", "shield_us_ca_3"],
@@ -1087,13 +1128,7 @@ export function loadShields() {
   };
   shields["US:CO:E470"] = {
     spriteBlank: "shield_us_co_e470",
-    textColor: Color.shields.black,
-    padding: {
-      left: 2,
-      right: 2,
-      top: 10,
-      bottom: 2,
-    },
+    notext: true,
   };
   shields["US:CO:NW"] = {
     spriteBlank: "shield_us_co_nw",
@@ -3074,7 +3109,7 @@ export function loadShields() {
       bottom: 5,
     },
   };
-  ["FA", "Washington"].forEach(
+  ["FA", "Daggett", "Duchesne", "Washington"].forEach(
     (county) =>
       (shields[`US:UT:${county}`] = pentagonUpShield(
         3,
@@ -3083,6 +3118,26 @@ export function loadShields() {
         Color.shields.yellow
       ))
   );
+  shields["US:UT:San_Juan"] = {
+    spriteBlank: ["shield_us_ut_san_juan"],
+    textColor: Color.shields.yellow,
+    padding: {
+      left: 6,
+      right: 2,
+      top: 8,
+      bottom: 2,
+    },
+  };
+  shields["US:UT:Uintah"] = {
+    spriteBlank: ["shield_us_ut_uintah"],
+    textColor: Color.shields.white,
+    padding: {
+      left: 4,
+      right: 2,
+      top: 8,
+      bottom: 4,
+    },
+  };
 
   // Virginia
   shields["US:VA"] = {
@@ -3257,6 +3312,11 @@ export function loadShields() {
       bottom: 4,
     },
   };
+  // Frank Lloyd Wright Trail
+  shields["US:WI:FLWT"] = {
+    spriteBlank: "shield_us_wi_flwt",
+    notext: true,
+  };
 
   // West Virginia
   shields["US:WV"] = roundedRectShield(
@@ -3360,6 +3420,25 @@ export function loadShields() {
     colorDarken: Color.shields.green,
     colorLighten: Color.shields.white,
     textColor: Color.shields.white,
+  };
+
+  // Ecuador
+  shields["EC:primaria"] = {
+    ...usInterstateShield,
+  };
+  shields["EC:secundaria"] = {
+    spriteBlank: [
+      "shield_ec_secundaria_2",
+      "shield_ec_secundaria_3",
+      "shield_ec_secundaria_4",
+    ],
+    textColor: Color.shields.white,
+    padding: {
+      left: 4,
+      right: 4,
+      top: 5,
+      bottom: 5,
+    },
   };
 
   // Peru
@@ -3528,6 +3607,23 @@ export function loadShields() {
   );
 
   // ASIA
+
+  // Mashreq
+  shields["Arab Mashreq International Road Network"] = {
+    spriteBlank: [
+      "shield_arab_mashreq_2",
+      "shield_arab_mashreq_3",
+      "shield_arab_mashreq_4",
+    ],
+    textLayout: textConstraint("ellipse"),
+    textColor: Color.shields.blue,
+    padding: {
+      left: 2,
+      right: 2,
+      top: 2,
+      bottom: 4,
+    },
+  };
 
   // Armenia
   shields["am:national"] = roundedRectShield(
@@ -3928,6 +4024,19 @@ export function loadShields() {
   shields["np:regional"] = roundedRectShield(
     Color.shields.white,
     Color.shields.black
+  );
+
+  // Oman
+  shields["OM:N-road"] = shields["Arab Mashreq International Road Network"];
+  shields["OM:A-road"] = circleShield(
+    Color.shields.white,
+    Color.shields.black,
+    Color.shields.blue
+  );
+  shields["OM:S-road"] = shields["OM:D-road"] = roundedRectShield(
+    Color.shields.white,
+    Color.shields.black,
+    Color.shields.blue
   );
 
   // Philippines

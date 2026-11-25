@@ -3,11 +3,16 @@
 import { localizedName } from "@americana/diplomat";
 import * as Color from "../constants/color.js";
 
-const parkLayerFilter = ["!=", ["get", "class"], "aboriginal_lands"];
+const parkStepFilter = [
+  "step",
+  ["zoom"],
+  ["<=", ["get", "rank"], 2], //Only rank 2 (dynamic) to z10
+  10,
+  [">=", ["get", "rank"], 1], //Show all past z10
+];
 
 export const fill = {
   id: "protected-area_fill",
-  filter: parkLayerFilter,
   type: "fill",
   paint: {
     "fill-color": Color.parkFill,
@@ -18,7 +23,6 @@ export const fill = {
 
 export const outline = {
   id: "protected-area_outline",
-  filter: parkLayerFilter,
   type: "line",
   paint: {
     "line-color": Color.parkOutline,
@@ -31,7 +35,7 @@ export const outline = {
 export const label = {
   id: "protected-area_label",
   type: "symbol",
-  filter: ["all", ["has", "rank"], parkLayerFilter],
+  filter: parkStepFilter,
   paint: {
     "text-color": Color.parkLabel,
     "text-halo-blur": 1,
@@ -58,7 +62,7 @@ export const parkFill = {
 export const cemeteryFill = {
   id: "cemetery-fill",
   type: "fill",
-  filter: ["==", "class", "cemetery"],
+  filter: ["==", ["get", "class"], "cemetery"],
   paint: {
     "fill-color": Color.cemeteryFill,
   },
@@ -73,7 +77,7 @@ export const cemeteryFill = {
 export const pitchFill = {
   id: "pitch-fill",
   type: "fill",
-  filter: ["==", "class", "pitch"],
+  filter: ["==", ["get", "class"], "pitch"],
   paint: {
     "fill-color": Color.pitchFill,
   },
@@ -95,7 +99,7 @@ export const parkOutline = {
 export const cemeteryOutline = {
   id: "cemetery-outline",
   type: "line",
-  filter: ["==", "class", "cemetery"],
+  filter: ["==", ["get", "class"], "cemetery"],
   paint: {
     "line-color": Color.cemeteryOutline,
   },
@@ -110,7 +114,7 @@ export const cemeteryOutline = {
 export const pitchOutline = {
   id: "pitch-outline",
   type: "line",
-  filter: ["==", "class", "pitch"],
+  filter: ["==", ["get", "class"], "pitch"],
   paint: {
     "line-color": Color.pitchOutline,
   },

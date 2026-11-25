@@ -1,71 +1,44 @@
-# OpenStreetMap Americana on AARoads
+# AARoads Maps featuring OpenStreetMap Americana
 
-_A quintessentially American map style_ [🗺 View the map](https://aaroads-wiki.github.io/openstreetmap-americana/)
+<img src="doc-img/osm-americana-logo.svg" alt="" width="200" align="right"/>
 
-<img src="doc-img/osm-americana-logo.svg" alt="Americana map style logo" width="200" align="right"/>
+[🗺 View the map](https://aaroads-wiki.github.io/openstreetmap-americana/)
 
-> _The United States of America is such a glorious mess of contradiction, such a crazy quilt of competing themes, such a fecund mishmash of people and ideas, that defining us is pretty much pointless. There is, of course, a kind of faded notion of "Americana", one that concerns Route 66, diners, freak rock formations, and the like—but even in its halcyon days this "roadside attraction" version of America was never an accurate or nuanced distillation of our massively complicated culture._ <br/><sub>-Hampton Sides, <i>[Americana: Dispatches from the New Frontier](<https://en.wikipedia.org/wiki/Americana_(Sides_book)>)</i> (2004)</sub>
+## Introduction
 
-<br />
+The [AARoads Wiki](https://wiki.aaroads.com/) has partnered with [OpenStreetMap](https://www.openstreetmap.org/) and [OSM Americana](https://github.com/osm-americana/openstreetmap-americana/) to bring you AARoads Maps, a digital recreation of the heyday of print transportation atlases in North America, brought back to life with interactivity and personalization. AARoads Maps enhances [countless infoboxes and other contexts](https://wiki.aaroads.com/wiki/AARoads:Maps), making it easy for visitors to find their bearings as they read the mellifluous article text. The OSM Americana style was chosen for its reliance on freely licensed, community-maintained OSM data, its use of modern map technology, and its adherence to a visual style that North American roadgeeks would feel right at home in.
 
-The [AARoads Wiki](https://wiki.aaroads.com/) features this fork of [OpenStreetMap Americana](https://github.com/osm-americana/openstreetmap-americana/) in [countless infoboxes and other contexts](https://wiki.aaroads.com/wiki/AARoads:Maps), making it easy for visitors to find their bearings as they read the mellifluous article text. Americana was chosen for its reliance on freely licensed, community-maintained OpenStreetMap data, its use of modern map technology, and its adherence to a visual style that North American roadgeeks would feel right at home in.
+This fork retains OSM Americana’s characteristic shields but tweaks the colors to match [a color scheme for static maps](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_U.S._Roads/Maps_task_force#Standards) that the AARoads Wiki’s predecessor, the English Wikipedia’s WikiProject U.S. Roads, [adopted in 2006](https://en.wikipedia.org/wiki/Wikipedia_talk:WikiProject_U.S._Roads/Maps_task_force/Archive_1#Voting) with minor subsequent adjustments.
 
-This fork retains Americana’s characteristic shields but tweaks the colors to match [a color scheme for static maps](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_U.S._Roads/Maps_task_force#Standards) that the AARoads Wiki’s predecessor, the English Wikipedia’s WikiProject U.S. Roads, [adopted in 2006](https://en.wikipedia.org/wiki/Wikipedia_talk:WikiProject_U.S._Roads/Maps_task_force/Archive_1#Voting) with minor subsequent adjustments.
+## Explore AARoads Maps
 
-## OpenStreetMap US
+The interactive map is available [at aaroads.com](https://www.aaroads.com/aamaps/) or with additional features [on GitHub Pages](https://aaroads-wiki.github.io/openstreetmap-americana/). Click the Legend button to learn the meaning of each symbol, line, and color based on the features currently visible on the map. Click the 🌐 button to simulate a physical globe. Click the ⛰️ button to simulate a relief map.
 
-OpenStreetMap Americana is a community project supported by [OSM US](https://openstreetmap.us), the OpenStreetMap local chapter for the United States. OSM US supports the project by providing tile rendering and other computing infrastructure.
+The style tries to label places in [your browser’s preferred language](https://www.w3.org/International/questions/qa-lang-priorities). To change this preference, consult your browser’s documentation: [Chrome](https://support.google.com/chrome/answer/173424), [Firefox](https://support.mozilla.org/en-US/kb/use-firefox-another-language), [Safari for macOS](https://support.apple.com/guide/mac-help/change-the-system-language-mh26684/mac), [Safari for iOS](https://support.apple.com/en-us/HT204031). To override this preference, click the Change button in the lower-right corner of the map. Alternatively, add `&language=` to the URL, followed by a comma-separated list of [IETF language tags](https://www.w3.org/International/articles/language-tags/). For example, here’s a map labeled [in Portuguese, falling back to Spanish](https://aaroads-wiki.github.io/openstreetmap-americana/#language=pt,es). If we don’t have the name of a place in any of your preferred languages, the style shows the name in the local language as a last resort.
 
-## How to use
+## Bring a slice home with you
 
-You can install the OpenStreetMap Americana package and [deploy it anywhere](CONTRIBUTING.md#Production%20builds) as a static webpage. For your convenience, we’ve deployed it [on GitHub Pages](https://aaroads-wiki.github.io/openstreetmap-americana/). Click the Legend button to learn the meaning of each symbol, line, and color based on the features currently visible on the map. Click the 🌐 button to simulate a physical globe. Click the ⛰️ button to simulate a relief map.
+You can [build and deploy OSM Americana](INSTALL.md#production-builds) anywhere as static Web page or integrate it into your own Web application via an NPM package. If your project has specific needs that do not apply more generally to this project’s audience, feel free to fork this repository.
 
-The style tries to label places in [your browser’s preferred language](https://www.w3.org/International/questions/qa-lang-priorities). To change this preference, consult your browser’s documentation: [Chrome](https://support.google.com/chrome/answer/173424), [Firefox](https://support.mozilla.org/en-US/kb/use-firefox-another-language), [Safari for macOS](https://support.apple.com/guide/mac-help/change-the-system-language-mh26684/mac), [Safari for iOS](https://support.apple.com/en-us/HT204031). You can also override this preference by adding `&language=` to the URL, followed by a comma-separated list of [IETF language tags](https://www.w3.org/International/articles/language-tags/). For example, here’s a map labeled [in Portuguese, falling back to Spanish](https://aaroads-wiki.github.io/openstreetmap-americana/#language=pt,es). If we don’t have the name of a place in any of your preferred languages, the style shows the name in the local language as a last resort.
+OSM Americana is a Web application that generates a [MapLibre stylesheet](https://maplibre.org/maplibre-style-spec/) at runtime. Many Web and mobile software applications can display MapLibre stylesheets. You can point these applications to [this prebuilt stylesheet](https://aaroads-wiki.github.io/openstreetmap-americana/style.json) in JSON format, with the following caveats:
 
-## Contributor’s guide
+- Route shields and some point of interest icons are missing.
+- Labels are in the local language and units, not your preferred language and units.
 
-_Contributors welcome!_
+The same caveats apply if you set up a simple MapLibre map using this JSON file. For the full OSM Americana experience, install the following MapLibre plugins:
 
-The repository is organized as follows:
+- [Americana Shield Renderer](https://github.com/osm-americana/maplibre-gl-shields/) ([`@americana/maplibre-shield-generator`](https://www.npmjs.com/package/@americana/maplibre-shield-generator)) for route shields. [Shield definitions](https://americanamap.org/shields.json) are available for typical maps.
+- [Diplomat](https://github.com/osm-americana/diplomat/) ([@americana/diplomat](https://www.npmjs.com/package/@americana/diplomat)) for localized labels.
 
-- **src/** - The map style. See [CONTRIBUTING.md](CONTRIBUTING.md).
-- **dev/** - Development tools used for style development. See [Style Developer Tools](dev/README.md)
-- **test/** - Automated unit tests.
-- **shieldlib/** - Maplibre [shield rendering library](shieldlib/README.md) ([npm entry](https://www.npmjs.com/package/@americana/maplibre-shield-generator?activeTab=readme)).
+These plugins are compatible with any MapLibre style. Install them on your Web page to lend your map an Americana level of sophistication.
 
-Some general guidelines:
+The map’s contents come from tiles that conform to the [OpenMapTiles schema](https://openmaptiles.org/schema/). The default configuration uses tiles hosted by the [OpenStreetMap U.S. Tileservice](https://tiles.openstreetmap.us/vector/openmaptiles/). The [tile server usage policy](https://tiles.openstreetmap.us/usage-policy/) describes the allowable usage of this tileset. Compatible tilesets are also available from several commercial hosts. Alternatively, you can [set up your own tile server](INSTALL.md#running-your-own-tile-server) on cloud infrastructure at relatively modest cost.
 
-- Please follow the coding style guidelines described in each sub-folder. These guidelines are designed to make it easier for collaboration and reduce the chance of edit conflicts.
-- Innovation is encouraged! Please open a new ticket with your great ideas as a centralized focal point for discussion.
-- New contributors are welcome!
-- This style operates on the principle of consensus. Maintainers should ensure that changes represent a broad consensus within the American mapping community.
-- Maintainers are also responsible to ensure that this principle of consensus does not cause stagnation or inaction. Contributor time is valuable; accepting the responsibility of being a maintainer means committing to responding to issues and PRs on a reasonable timeline that encourages community participation.
+## It takes a village
 
-## Technology stack
+Come join our barn raising! [OSM Americana](https://github.com/osm-americana/openstreetmap-americana/) is a hands-on opportunity to learn more about maps than you can simply as an armchair mapper or Web developer. Bring your map collection and help us identify elements of print cartography that can be driven by OSM data. Help us investigate any changes that our dependencies need to make to implement these features. Let us know about any highway route system that lacks representation on the map. Try your hand at implementing a route shield.
 
-The technology stack for this style can be summarized below:
-
-<img src="doc-img/architecture.drawio.svg" alt="Americana technology stack" />
-
-The dynamic shield generator is included as a [module](shieldlib/README.md) in this repository and also [published to npm](https://www.npmjs.com/package/@americana/maplibre-shield-generator).
-
-Automatic label localization is powered by the [Diplomat](https://github.com/osm-americana/diplomat/) plugin, which is also [available on npm](https://www.npmjs.com/package/@americana/diplomat).
-
-## Artifacts
-
-- Style users can use the maplibre [StyleJSON](https://aaroads-wiki.github.io/openstreetmap-americana/style.json), and sprite sheets ([1x](https://aaroads-wiki.github.io/openstreetmap-americana/sprites/sprite.png), [2x](https://aaroads-wiki.github.io/openstreetmap-americana/sprites/sprite@2x.png)).
-- For highway shield library users, a [ShieldJSON](https://aaroads-wiki.github.io/openstreetmap-americana/shields.json) must be supplied to associate route networks with sprite images and drawn shield shapes.
-- The project [taginfo.json](https://aaroads-wiki.github.io/openstreetmap-americana/taginfo.json) lists which tags are used by the style.
-
-## Data sources
-
-The OpenStreetMap Americana style is built upon the [OpenMapTiles schema](https://openmaptiles.org/schema/), which includes:
-
-- Feature data from OpenStreetMap
-- Translated name labels from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) for places, POIs, airports, roads, bodies of water, parks, and mountain peaks.
-- Low-zoom ocean/water, boundary, and urbanized area data from [Natural Earth](https://www.naturalearthdata.com/).
-
-The legend’s “Route markers” section is labeled using labels of Wikidata items that are tagged with the [corresponding OSM tag](https://www.wikidata.org/wiki/Property:P1282).
+To learn more about contributing, see our [contributing guide](CONTRIBUTING.md). You can also help out indirectly by contributing to [our data sources](ACKNOWLEDGEMENTS.md#data-sources).
 
 ## Coverage
 
@@ -77,6 +50,8 @@ Americana displays custom route shields for routes in all U.S. states and territ
 
 We are hoping that it will support more countries; you can [help us](https://github.com/osm-americana/openstreetmap-americana/projects/1)!
 
-## Tile Server
+## Acknowledgments
 
-Although the source code in this repository is dedicated to the public domain under a CC0 waiver, it is configured by default to load map tiles from an [OpenStreetMap US](https://www.openstreetmap.us/) hosted community [tile server](https://tiles.openstreetmap.us/). OpenStreetMap US, the local chapter for OpenStreetMap in the United States, makes this server available for use by other hobbyist and community projects with constraints. See the [tile server usage policy](https://tiles.openstreetmap.us/usage-policy/) for more details. This usage policy describes the allowable usage of the tiles for other projects, separate from this style or the application being developed in this repository.
+[OpenStreetMap U.S.](https://openstreetmap.us/), OpenStreetMap’s local chapter in the United States, supports OSM Americana as a community project by providing tile rendering and other computing infrastructure. You can support their work by [donating to OpenStreetMap U.S.](https://openstreetmap.us/get-involved/donate/)
+
+The source code and artwork in this repository are [dedicated to the public domain](LICENSE) under a CC0 waiver. Some icons incidentally depict logos or insignia that may be subject to trademark restrictions when used outside the context of a map. See the [full acknowledgments](ACKNOWLEDGMENTS.md).
